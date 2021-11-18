@@ -15,6 +15,7 @@ body {
     [title] auto
     [member] auto
     [purpose] auto
+    [target] auto
     [process] auto
     [future] auto
     ;
@@ -25,6 +26,7 @@ body {
   font-style: italic;
   color: black;
   text-align: center;
+  font-size: 40px;
 }
 
 body > * {
@@ -57,7 +59,8 @@ h1 {
 
 .member div {
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  margin-left: 300px;
 }
 
 
@@ -74,8 +77,7 @@ div p {
 
 .purpose {
   grid-row: purpose;
-  /* background-color: rgba(63, 81, 181, 0.5); */
-  width: 100%;
+
 
 }
 .purpose h2 {
@@ -83,6 +85,15 @@ div p {
   margin-top: 100px;
   text-align: center;
 }
+
+.target {
+  grid-row: target;
+}
+
+.target h2{
+
+}
+
 .process {
   grid-row: process;
   /* background-color: rgba(0,51,51, 0.5); */
@@ -98,7 +109,7 @@ div p {
   text-align: start;
 }
 .process p {
-  padding-left: 300px;
+  padding-left: 200px;
 }
 .future {
   grid-row: future;
