@@ -1,0 +1,13 @@
+body {
+  background-color:  rgb(204,102,102);
+}
+div {
+  display: flex;
+  justify-content: center;
+
+}
+#myCanvas {
+  background-color: white;
+  justify-self: center;
+  
+}
