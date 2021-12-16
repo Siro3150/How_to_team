@@ -7,7 +7,7 @@ div {
 
 }
 #myCanvas {
-  background-color: white;
   justify-self: center;
-  
+  border-color: black;
+  border-style: solid;
 }

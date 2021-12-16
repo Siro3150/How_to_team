@@ -4,7 +4,10 @@ function init() {
   // ステージを作成
   var stage = new createjs.Stage("myCanvas");
   stage.canvas.width = window.innerWidth;
+  console.log(window.innerWidth);
   stage.canvas.height = 2000;
+
+
 
   function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -37,7 +40,10 @@ function init() {
       let y2 = leng * Math.sin(angle * Math.PI / 180) + y1;
 
       // 線の種類を設定
-      if (level < 1) {
+      if (level == 13) {
+        this.graphics.setStrokeStyle(80).beginStroke('maroon');
+      }
+      else if (level < 1) {
         //先端に実をつける
         this.graphics.beginFill('red');
         this.graphics.drawCircle(x2, y2, 8);
@@ -67,6 +73,7 @@ function init() {
           width * getRandomArbitrary(0.6, 0.9),
           x2, y2, angle + getRandomArbitrary(0, 50)
         );
+
         this.drawTree(
           getRandomArbitrary(leng * 0.5, leng * 0.9),
           level,
@@ -80,19 +87,23 @@ function init() {
 
   //インスタンス化
   //背景の木
-  for (let j = 0; j < 30; j++) {
-    stage.addChild(new Tree(
-      getRandomArbitrary(0, 1400),
-      getRandomArbitrary(300, 1500),
-      0.5,
-      10)
-    );
-  }
-  //main
+  // for (let j = 0; j < 10; j++) {
+  //   stage.addChild(new Tree(
+  //     getRandomArbitrary(0, 1400),
+  //     getRandomArbitrary(300, 1500),
+  //     0.5,
+  //     10)
+  //   );
+  // }
+
+  //メインの木
   var tree = new Tree(700, 2000, 1, 13);
+
   // ステージに配置する
   stage.addChild(tree);
 
-  console.log(tree);
+  let leaf = new createjs.Bitmap("/Users/nobatakai/Desktop/leaf2.png");
+  stage.addChild(leaf);
+
   stage.update();
 }
