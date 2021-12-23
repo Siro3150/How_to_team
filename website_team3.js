@@ -30,87 +30,92 @@ function init() {
     }
 
     drawTree(x1, y1, leng, level, angle = -90,) {
-    let x2 = leng * Math.cos(angle * Math.PI / 180) + x1;
-    let y2 = leng * Math.sin(angle * Math.PI / 180) + y1;
+      let x2 = leng * Math.cos(angle * Math.PI / 180) + x1;
+      let y2 = leng * Math.sin(angle * Math.PI / 180) + y1;
 
-    cvs.moveTo(x1, y1);
-    cvs.lineTo(x2, y2);
+      cvs.moveTo(x1, y1);
+      cvs.lineTo(x2, y2);
 
-    if (level < 9) {
-      cvs.arc(x2, y2, leng * 1.3, Math.PI * 2, false);
-    }
-    if (level > 0) {
-      level = level - 1;
-      this.drawTree(x2, y2, getRandomArbitrary(leng * 0.5, leng * 0.9), level, angle + getRandomArbitrary(0, 50));
-      this.drawTree(x2, y2, getRandomArbitrary(leng * 0.5, leng * 0.9), level, angle - getRandomArbitrary(0, 50));
-    }
+      if (level < 9) {
+        cvs.arc(x2, y2, leng * 1.3, Math.PI * 2, false);
+      }
+      if (level > 0) {
+        level = level - 1;
+        this.drawTree(x2, y2, getRandomArbitrary(leng * 0.5, leng * 0.9), level, angle + getRandomArbitrary(0, 50));
+        this.drawTree(x2, y2, getRandomArbitrary(leng * 0.5, leng * 0.9), level, angle - getRandomArbitrary(0, 50));
+      }
 
     }
 
     drawMiki(x1, y1, leng) {
-    y1 -= leng;
-    //支点
-    cvs.beginPath();
-    cvs.moveTo(x1, y1);
+      y1 -= leng*1.3;
+      //支点
+      cvs.beginPath();
+      cvs.moveTo(x1, y1);
 
-    //幹左上
-    let x2 = leng * Math.cos(-110 * Math.PI / 180) + x1;
-    let y2 = leng * Math.sin(-110 * Math.PI / 180) + y1;
-    cvs.lineTo(x2, y2);
-    console.log("2", x2, y2);
+      //幹左上
+      let x2 = leng * Math.cos(-110 * Math.PI / 180) + x1;
+      let y2 = leng * Math.sin(-110 * Math.PI / 180) + y1;
+      cvs.lineTo(x2, y2);
+      console.log("2", x2, y2);
 
-    //根左端
-    let x3 = leng * 4 * Math.cos(98 * Math.PI / 180) + x1;
-    let y3 = leng * 4 * Math.sin(98 * Math.PI / 180) + y1;
-    console.log("3", x3, y3);
-    cvs.quadraticCurveTo(x1, y1 + leng, x3, y3);
+      //根左端
+      let x3 = leng * 4 * Math.cos(98 * Math.PI / 180) + x1;
+      let y3 = leng * 4 * Math.sin(98 * Math.PI / 180) + y1;
+      console.log("3", x3, y3);
+      cvs.quadraticCurveTo(x1, y1 + leng, x3, y3);
 
-    //根
-    let x3_1 = (x3 + x1) / 2;
-    let y3_1 = y3 - leng / 2;
-    cvs.lineTo(x3_1, y3_1);
+      //根
+      let x3_1 = (x3 + x1) / 2;
+      let y3_1 = y3 - leng / 2;
+      cvs.lineTo(x3_1, y3_1);
 
-    let x3_2 = x1;
-    let y3_2 = y3;
-    cvs.lineTo(x3_2, y3_2);
+      let x3_2 = x1;
+      let y3_2 = y3;
+      cvs.lineTo(x3_2, y3_2);
 
-    let x3_3 = x1 + (x1 - x3_1)
-    let y3_3 = y3_1
-    cvs.lineTo(x3_3, y3_3);
+      let x3_3 = x1 + (x1 - x3_1)
+      let y3_3 = y3_1
+      cvs.lineTo(x3_3, y3_3);
 
-    //根右端
-    let x4 = x1 + (x1 - x3);
-    let y4 = y3
-    console.log("4", x4, y4);
-    cvs.lineTo(x4, y4);
-    let x5 = x1 + (x1 - x2);
-    let y5 = y2
-    console.log("5", x5, y5);
-    cvs.quadraticCurveTo(x1, y1 + leng, x5, y5);
+      //根右端
+      let x4 = x1 + (x1 - x3);
+      let y4 = y3
+      console.log("4", x4, y4);
+      cvs.lineTo(x4, y4);
+      let x5 = x1 + (x1 - x2);
+      let y5 = y2
+      console.log("5", x5, y5);
+      cvs.quadraticCurveTo(x1, y1 + leng, x5, y5);
 
-    cvs.lineTo(x1, y1);
-    cvs.fillStyle = "maroon";
-    cvs.fill();
-    cvs.closePath();
+      cvs.lineTo(x1, y1);
+      cvs.fillStyle = "maroon";
+      cvs.fill();
+      cvs.closePath();
     }
 
    drawMi(x1, y1, leng, num) {
 
-    for (let i = 0; i < num; i++) {
-      let x = getRandomArbitrary(x1 + leng * 2, x1 - leng * 2);
-      let y = getRandomArbitrary(y1 - leng * 2, y1 - leng * 3);
-      cvs.beginPath();
-      cvs.arc(x, y, leng / 10, Math.PI * 2, false);
-      cvs.fillStyle = "red";
-      cvs.stroke();
-      cvs.fill();
-      cvs.closePath();
-    }
+      for (let i = 0; i < num; i++) {
+        let x = getRandomArbitrary(x1 + leng * 2, x1 - leng * 2);
+        let y = getRandomArbitrary(y1 - leng * 2, y1 - leng * 3);
+        // cvs.beginPath();
+        // cvs.arc(x, y, leng / 3, Math.PI * 2, false);
+        // cvs.fillStyle = "green";
+        // cvs.fill();
+        // cvs.closePath();
+        cvs.beginPath();
+        cvs.arc(x, y, leng / 10, Math.PI * 2, false);
+        cvs.fillStyle = "red";
+        cvs.stroke();
+        cvs.fill();
+        cvs.closePath();
+      }
     }
   }
 
   for (let j = 0; j < 10; j++) {
-    new Tree(getRandomArbitrary(0,canvas.width), getRandomArbitrary(0, 1600), 100, 8);
+    new Tree(getRandomArbitrary(0,canvas.width), getRandomArbitrary(0, 1700), 100, 10);
   }
 
   const mainTree = new Tree(canvas.width/2, 1800, 350, 10);
@@ -121,7 +126,7 @@ function init() {
     return Math.random() * (max - min) + min;
   }
 
-  
+
   function getMousePosition(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
     return {
@@ -305,6 +310,17 @@ function init() {
   cvs.closePath();
   cvs.stroke();
 
-
-  console.log('Hello');
-}
+//   //目的にあったWebサイト作りをサポートするハウツー
+//   cvs.beginPath();
+//   cvs.font = "50pt sans-selif";
+//   cvs.textAlign = "center";
+//   cvs.textBaseline = "middle";
+//   cvs.fillStyle = "rgba(255, 255, 255, 1)";
+//   cvs.fillRect(500, 1300, 450, 130);
+//   cvs.fill();
+//   cvs.fillStyle = "black";
+//   cvs.fillText("目的にあったWebサイト作りをサポート", canvas.width/2, 1369);
+//   cvs.closePath();
+//   cvs.stroke();
+//   console.log('Hello');
+ }
